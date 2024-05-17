@@ -42,7 +42,6 @@ class Task {
 
   createTask() {
     const task = {
-      id: chance.guid(),
       reminders: this.getRandomTodo(),
       status: 'pending',
       dueDate: chance.date({ string: true }),

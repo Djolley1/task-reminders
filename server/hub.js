@@ -16,6 +16,7 @@ function handleConnection(socket) {
   socket.on('delete-task', (payload) => handleDeleteTask(payload, socket));
 }
 
+
 function startServer() {
   console.log('The server has been started');
   caps.on('connection', handleConnection);
