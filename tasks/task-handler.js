@@ -6,7 +6,7 @@ function handleTaskCreated(socket, task) {
   const timeUntilDue = new Date(task.dueDate) - new Date();
   setTimeout(() => {
     console.log('Reminder: Task is due!', task);
-    console.log(timeUntilDue);
+    // console.log(timeUntilDue);
     // Optionally emit a reminder event
     socket.emit('task-reminder', task);
   }, timeUntilDue);

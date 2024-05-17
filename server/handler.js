@@ -18,6 +18,19 @@ function handleCompleteTask(payload, socket) {
     console.error('Task not found:', payload.id);
   }
 }
+// function handleCompleteTask(payload, socket) {
+//   console.log('payload ', payload);
+//   const task = tasks.completeTask(payload.id);
+//   if (task) {
+//     task.status = 'completed';
+//     task.complete = true;
+//     socket.emit('task-completed', task);
+//   } else {
+//     console.error('Error: Task is undefined');
+//   }
+
+// }
+
 
 function handleDeleteTask(payload, socket) {
   const task = tasks.deleteTask(payload.id);
