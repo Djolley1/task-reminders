@@ -12,12 +12,21 @@ function handleTaskCreated(socket, task) {
   }, timeUntilDue);
 }
 
-function handleTaskCompleted(task) {
+function handleTaskCompleted(socket, task) {
   console.log('Task completed:', task);
+  if (task) {
+    task.status = 'completed';
+    task.complete = true;
+    socket.emit('task-completed', task);
+  } else {
+    console.error('Error: Task is undefined');
+  }
+
 }
 
-function handleTaskDeleted(task) {
+function handleTaskDeleted(socket, task) {
   console.log('Task deleted:', task);
+  socket.emit('task-deleted', task);
 }
 
 module.exports = {

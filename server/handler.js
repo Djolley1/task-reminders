@@ -11,8 +11,12 @@ function handleCreateTask(socket) {
 
 function handleCompleteTask(payload, socket) {
   const task = tasks.completeTask(payload.id);
-  console.log('Task completed:', task);
-  socket.emit('task-completed', task);
+  if (task) {
+    console.log('Task completed:', task);
+    socket.emit('task-completed', task);
+  } else {
+    console.error('Task not found:', payload.id);
+  }
 }
 
 function handleDeleteTask(payload, socket) {
