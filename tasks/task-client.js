@@ -59,7 +59,7 @@ socket.on('task-created', (task) => {
 });
 
 socket.on('task-completed', (task) => handleTaskCompleted(socket, task));
-socket.on('task-deleted', handleTaskDeleted);
+socket.on('task-deleted', (task) => handleTaskDeleted(socket, task));
 
 // Emit a create task event at intervals
 setInterval(() => {
