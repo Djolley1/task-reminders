@@ -7,10 +7,10 @@ const taskQueue = new Queue();
 
 function handleCreateTask(socket) {
   const task = tasks.createTask();
-  console.log('Task created:', task);
-  socket.emit('task-created', task);
   taskQueue.enqueue(task);
-  console.log('Current task queue:', taskQueue.storage);
+  console.log('Task created and enqueued:', task);
+  console.log('Current task queue length:', taskQueue.length());
+  socket.emit('task-created', task);
 }
 
 function handleCompleteTask(payload, socket) {
@@ -19,7 +19,7 @@ function handleCompleteTask(payload, socket) {
     console.log('Task completed:', task);
     socket.emit('task-completed', task);
     taskQueue.storage = taskQueue.storage.filter(t => t.id !== task.id);
-    console.log('Current task queue:', taskQueue.storage); 
+    console.log('Current task queue length:', taskQueue.length());
   } else {
     console.error('Task not found:', payload.id);
   }
@@ -27,11 +27,11 @@ function handleCompleteTask(payload, socket) {
 
 function handleDeleteTask(payload, socket) {
   const task = tasks.deleteTask(payload.id);
-  console.log('Task deleted:', task);
   if (task) {
+    console.log('Task deleted:', task);
     socket.emit('task-deleted', task);
     taskQueue.storage = taskQueue.storage.filter(t => t.id !== task.id);
-    console.log('Current task queue:', taskQueue.storage);
+    console.log('Current task queue length:', taskQueue.length());
   } else {
     console.error('Task not found:', payload.id);
   }
