@@ -50,4 +50,4 @@ The project is centered around developing a straightforward to-do list applicati
 - Implement real-time updates and notifications.
 - Use socket.io on the server-side and socket.io-client on the client-side for real-time communication.
 
-<img src='./lab_14_uml_720.png' alt='UML' width='300'/>
+<img src='./lab_14_uml_720.png' alt='UML' width='400'/>
