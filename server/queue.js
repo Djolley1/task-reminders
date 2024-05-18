@@ -1,3 +1,4 @@
+// queue.js
 'use strict';
 
 class Queue {
@@ -11,14 +12,6 @@ class Queue {
 
   dequeue() {
     return this.storage.shift();
-  }
-
-  peek() {
-    return this.storage[0];
-  }
-
-  isEmpty() {
-    return this.storage.length === 0;
   }
 
   length() {
